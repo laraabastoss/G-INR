@@ -1,5 +1,17 @@
 # G-INR: Gated Implicit Neural Representations for Medical Image Segmentation
 
-Deep learning models like U-Net, DeepLabV3, and transformer-based segmentation models capture semantic context well, but they often depend on large parameter counts, fixed-resolution inputs, and discrete pixel representations. The problem of segmentation gets intensified by restricted annotations and domain shift. Implicit Neural Representations (INRs) allow for continuous image modeling; however, they often smooth down boundaries too much or have trouble separating classes with tiny details. To address the issue, we suggest G-INR, a gated implicit neural representation that uses a residual dual-frequency architecture to control low and high frequency information and meta-learned initialization to make it easy to modify at test time. The gating method selectively amplifies border details while maintaining consistency in homogeneous areas. Experiments are carried out with the in-domain MRI and MedSegBench datasets. It is observed from the experimentation that G-INR does a better job of reconstructing images and finding boundaries with fewer parameters than other state of the art 
-approaches. Qualitative findings and ablation studies validate the significance of controlled frequency modulation, underscoring the resilience and applicability of frequency-adaptive implicit representations for medical image segmentation.
+We propose G-INR, a gated implicit neural representation that uses a residual dual-frequency architecture to control low and high frequency information and meta-learned initialization to make it easy to modify at test time. The gating method selectively amplifies border details while maintaining consistency in homogeneous areas. 
 
+## Architecture
+
+<img width="1397" height="616" alt="image" src="https://github.com/user-attachments/assets/cc9119d8-5c3c-490e-8669-aa46ae8a03d3" />
+
+**Figure 1** . Proposed gated implicit neural representation. The INR adaptively mixes low- and high-frequency sinusoidal responses through a learnable gating function \( g \), enabling flexible signal representation across frequency bands.
+
+<img width="639" height="434" alt="image" src="https://github.com/user-attachments/assets/ed8372c5-d293-43b0-9b0b-2e42afb67160" />
+
+**Figure 2.** Meta-learning framework for INR initialization. We learn optimal initial parameters \( \theta^{*} \) and \( \phi^{*} \) for an \( L \)-layer reconstruction network, enabling fast adaptation to new signals.
+
+## Repository Structure
+
+- `G-INR_3d.ipynb`: Training and evaluation code for G-INR on the OASIS 3D MRI dataset.
